@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: tetris
-        image: rajkotialeti/tetrisv1:12
+        image: rajkotialeti/183631344284.dkr.ecr.us-east-1.amazonaws.com/tetrisv1:13
         ports:
         - containerPort: 3000
 ---
