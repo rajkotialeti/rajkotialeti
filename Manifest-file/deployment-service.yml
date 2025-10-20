@@ -3,6 +3,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: tetris
+  namespace: tetris
 spec:
   replicas: 3
   selector:
@@ -18,19 +19,22 @@ spec:
         image: 183631344284.dkr.ecr.us-east-1.amazonaws.com/tetrisv1:20
         ports:
         - containerPort: 3000
+
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: tetris-service
+  namespace: tetris
 spec:
   selector:
     app: tetris
   ports:
   - protocol: TCP
-    port: 80                
+    port: 80
     targetPort: 3000
   type: ClusterIP
+
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -55,4 +59,3 @@ spec:
                 name: tetris-service
                 port:
                   number: 80
-
